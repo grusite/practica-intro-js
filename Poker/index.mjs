@@ -1,41 +1,80 @@
-import {
-  Deck,
-  Card,
-  handRanked,
-  isSameColor,
-  hasConsecutiveValues
-} from "./utils.mjs";
+import { Deck, Card, comparateHandRanking, resolveHand } from "./utils.mjs";
 
-const result = { win: 1, loss: 2, tie: 3 };
-const ranks = [
-  "Straight flush",
-  "Four of a kind",
-  "Full house",
-  "Flush",
-  "Straight",
-  "Three of a kind",
-  "Two pairs",
-  "Pair",
-  "High card"
-];
+const ranks = {
+  straightFlush: "Escalera de Color",
+  fourOfAKind: "Poker",
+  fullHouse: "Full",
+  flush: "Color",
+  straight: "Escalera",
+  threeOfAKind: "Trio",
+  twoPairs: "Dobles Parejas",
+  pair: "Parejas",
+  highCard: "Carta más alta"
+};
 
-const card = new Card("A", "H");
-console.log(card);
+function resultado(player1Hand, player2Hand) {
+  const resolvedHand1 = resolveHand(player1Hand);
+  const resolvedHand2 = resolveHand(player2Hand);
+  const p1result = Object.keys(ranks).indexOf(resolvedHand1);
+  const p2result = Object.keys(ranks).indexOf(resolvedHand2);
 
-// const hand = new Hand();
-// console.log("Hand " + hand.getRandomHand());
+  console.log(p1result);
+  console.log(p2result);
+
+  console.log(
+    "Entrada: Jugador 1: " +
+      player1Hand.map(card => card.getCard()) +
+      " Jugador 2: " +
+      player2Hand.map(card => card.getCard())
+  );
+
+  if (p1result < p2result) {
+    console.log("Salida: Jugador 1 gana, " + ranks[resolvedHand1]);
+  } else if (p1result > p2result) {
+    console.log("Salida: Jugador 2 gana, " + ranks[resolvedHand2]);
+  } else {
+    switch (comparateHandRanking(player1Hand, player2Hand)) {
+      case "player1":
+        console.log("Salida: Jugador 1 gana, " + ranks[resolvedHand1]);
+        break;
+      case "player2":
+        console.log("Salida: Jugador 2 gana, " + ranks[resolvedHand2]);
+        break;
+      case "tie":
+        console.log("Salida: Empate, " + ranks[resolvedHand1]);
+        break;
+    }
+  }
+}
 
 const deck1 = new Deck();
-const player1Hand = deck1.getRandomHand();
-const player2Hand = deck1.getRandomHand();
+// const player1Hand = deck1.getRandomHand();
 
-const myHand = ["2D", "3D", "4D", "5D", "6D"];
-const player3Hand = deck1.setCustomHand(myHand);
+const test = [
+  [
+    new Card(2, "D"),
+    new Card(2, "H"),
+    new Card(2, "D"),
+    new Card(6, "D"),
+    new Card(6, "D")
+  ],
+  [
+    new Card(2, "H"),
+    new Card(2, "D"),
+    new Card(2, "S"),
+    new Card(6, "C"),
+    new Card(7, "D")
+  ],
+  [
+    new Card(2, "D"),
+    new Card(2, "H"),
+    new Card(2, "D"),
+    new Card(6, "D"),
+    new Card(6, "D")
+  ],
+  deck1.getRandomHand()
+];
 
-console.log("Cartas del jugador 3: " + player3Hand.map(card => card.getCard()));
-console.log("Cartas color del j3: " + isSameColor(player3Hand));
-console.log("Valores cons del j3: " + hasConsecutiveValues(player3Hand));
-console.log("Cartas Ranked del j1: " + handRanked(player1Hand));
-console.log("Cartas del jugador 1: " + player1Hand.map(card => card.getCard()));
-console.log("Cartas del jugador 2: " + player2Hand.map(card => card.getCard()));
-console.log("Resultado: Jugador 1 gana, carta más alta");
+for (let i = 0; i < test.length - 1; i++) {
+  resultado(test[i], test[i + 1]);
+}
