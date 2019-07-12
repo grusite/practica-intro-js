@@ -2,6 +2,7 @@ import {
   Deck,
   Card,
   handRanked,
+  handPairsCompareRanked,
   comparateHandRanking,
   hasSameColor,
   hasConsecutiveValues,
@@ -35,6 +36,20 @@ const player3Hand = [
   new Card(2, "C"),
   new Card(5, "D")
 ];
+const player4Hand = [
+  new Card("A", "H"),
+  new Card("A", "D"),
+  new Card(2, "S"),
+  new Card(3, "C"),
+  new Card(4, "D")
+];
+const player5Hand = [
+  new Card(2, "H"),
+  new Card(3, "D"),
+  new Card(4, "S"),
+  new Card(7, "C"),
+  new Card(7, "D")
+];
 
 console.log("Cartas del jugador 2: " + player2Hand.map(card => card.getCard()));
 console.log("Cartas color del J2: " + hasSameColor(player2Hand));
@@ -46,6 +61,10 @@ console.log(
 console.log("Cartas del jugador 1: " + player1Hand.map(card => card.getCard()));
 console.log("Cartas del jugador 2: " + player2Hand.map(card => card.getCard()));
 console.log("Cartas del jugador 3: " + player3Hand.map(card => card.getCard()));
-// console.log("Resolviendo jugador 3: " + resultByValues(player1Hand));
+console.log("Resolviendo jugador 1: " + resultByValues(player1Hand));
+console.log(
+  "Mayor Ranking parejas J1 y J1: " +
+    handPairsCompareRanked(player4Hand, player5Hand)
+);
 console.log("Resolviendo jugador 3: " + resolveHand(player3Hand));
 console.log("Resultado: Jugador 1 gana, carta más alta");
