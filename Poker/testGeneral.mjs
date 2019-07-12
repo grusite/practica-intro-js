@@ -15,9 +15,6 @@ const card2 = new Card(2, "H");
 console.log(card);
 console.log(card2);
 
-// const hand = new Hand();
-// console.log("Hand " + hand.getRandomHand());
-
 const deck1 = new Deck();
 const player1Hand = deck1.getRandomHand();
 console.log(player1Hand);

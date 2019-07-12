@@ -2,7 +2,6 @@ import { Deck, Card, resultByValues } from "./utils.mjs";
 
 const deck1 = new Deck();
 const player1Hand = deck1.getRandomHand();
-// console.log("Player 1 " + player1Hand.map(card => card.getCard()));
 
 const player2Hand = [
   new Card(2, "D"),

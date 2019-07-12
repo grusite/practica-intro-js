@@ -45,16 +45,6 @@ class Deck {
     return this.deck;
   }
 
-  // setCustomHand(hand) {
-  //   this.hand = [];
-
-  //   for (let i = 0; i < hand.length; i++) {
-  //     hand[i] = new Card(hand[i].substr(0, 1), hand[i].substr(1, 1));
-  //     this.hand.push(hand[i]);
-  //   }
-  //   return this.hand;
-  // }
-
   getRandomHand() {
     this.hand = [];
 
@@ -68,32 +58,6 @@ class Deck {
     return this.hand;
   }
 }
-
-// class Hand {
-//   constructor() {
-//     this.hand = [];
-//   }
-
-//   setCustomHand(hand) {
-//     for (let i = 0; i < hand.length; i++) {
-//       hand[i] = new Card(hand[i].substr(0, 1), hand[i].substr(1, 1));
-//       this.hand.push(hand[i]);
-//     }
-//     return this.hand;
-//   }
-
-//   getRandomHand() {
-//     let randomDeckNumber = 0;
-//     const handCards = 5;
-//     const deck = new Deck();
-
-//     for (let i = 0; i < handCards; i++) {
-//       randomDeckNumber = Math.floor(Math.random() * this.deck.length);
-//       this.hand.push(deck.deck[randomDeckNumber]);
-//     }
-//     return this.hand;
-//   }
-// }
 
 const handRanked = hand => hand.map(card => card.rank).sort((a, b) => a - b);
 
