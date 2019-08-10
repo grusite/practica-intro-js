@@ -1,4 +1,5 @@
-import { Deck, getResultado } from "./utils.mjs";
+import { getResultado } from "./utils.mjs";
+import { Deck } from "./Deck.mjs";
 
 const deck1 = new Deck();
 

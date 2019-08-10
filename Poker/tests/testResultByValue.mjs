@@ -1,4 +1,6 @@
-import { Deck, Card, resultByValues } from "./utils.mjs";
+import { Deck } from "../Deck.mjs";
+import { Card } from "../Card.mjs";
+import { resultByValues } from "../utils.mjs";
 
 const deck1 = new Deck();
 const player1Hand = deck1.getRandomHand();

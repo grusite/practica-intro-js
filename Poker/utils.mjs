@@ -15,50 +15,6 @@ const ranks = {
   highCard: "Carta más alta"
 };
 
-class Card {
-  constructor(value, suit) {
-    this.value = value;
-    this.suit = suit;
-    this.rank = values.indexOf(this.value);
-  }
-  getCard() {
-    return this.value + this.suit;
-  }
-}
-
-class Deck {
-  constructor() {
-    this.deck = [];
-
-    for (let suit in suits) {
-      for (let value in values) {
-        const card = new Card(values[value], suits[suit]);
-        this.deck.push(card);
-      }
-    }
-  }
-
-  getDeck() {
-    for (let i = 0; i < this.deck.length; i++) {
-      this.deck[i] = this.deck[i].getCard();
-    }
-    return this.deck;
-  }
-
-  getRandomHand() {
-    this.hand = [];
-
-    let randomDeckNumber = 0;
-    const handCards = 5;
-
-    for (let i = 0; i < handCards; i++) {
-      randomDeckNumber = Math.floor(Math.random() * this.deck.length);
-      this.hand.push(this.deck[randomDeckNumber]);
-    }
-    return this.hand;
-  }
-}
-
 const handRanked = hand => hand.map(card => card.rank).sort((a, b) => a - b);
 
 const handPairsCompareRanked = (hand1, hand2) => {
@@ -261,8 +217,8 @@ const getResultado = function(player1Hand, player2Hand) {
 };
 
 export {
-  Card,
-  Deck,
+  suits,
+  values,
   handRanked,
   handPairsCompareRanked,
   comparateHandRanking,

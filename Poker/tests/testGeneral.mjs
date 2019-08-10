@@ -1,6 +1,6 @@
+import { Deck } from "../Deck.mjs";
+import { Card } from "../Card.mjs";
 import {
-  Deck,
-  Card,
   handRanked,
   handPairsCompareRanked,
   comparateHandRanking,
@@ -8,7 +8,7 @@ import {
   hasConsecutiveValues,
   resultByValues,
   resolveHand
-} from "./utils.mjs";
+} from "../utils.mjs";
 
 const card = new Card("A", "H");
 const card2 = new Card(2, "H");
@@ -49,7 +49,7 @@ const player5Hand = [
 ];
 
 console.log("Cartas del jugador 2: " + player2Hand.map(card => card.getCard()));
-console.log("Cartas color del J2: " + hasSameColor(player2Hand));
+console.log("Tiene color el J2?: " + hasSameColor(player2Hand));
 console.log("Valores consec del J2: " + hasConsecutiveValues(player2Hand));
 console.log("Cartas Ranked del J2: " + handRanked(player2Hand));
 console.log(
